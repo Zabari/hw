@@ -30,9 +30,10 @@ public class Rational{
 	this._denomer*=num._denomer;
     }
     public void divide(Rational num){
-	this._numer/=num._numer;
-	this._denomer/=num._denomer;
+	this._numer*=num._denomer;
+	this._denomer*=num._numer;
     }
+
 
     public static void main(String[] args){
 	Rational numy=new Rational(4,6);
