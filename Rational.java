@@ -41,7 +41,7 @@ public class Rational{
 	this._numer=this._numer*num._denomer-num._numer*this._denomer;
 	this._denomer*=num._denomer;
     }
-    public static int gcdew(int a, int b){
+    public static int gcd(int a, int b){
 	int x=a;
 	a=Math.max(a,b);
 	b=Math.min(x,b);
@@ -53,15 +53,21 @@ public class Rational{
 	return a;
     }
     public int gcd(){
-	return gcdew(this._numer,this._denomer);
+	return gcd(this._numer,this._denomer);
     }
     public void reduce(){
 	int x=gcd();
 	this._numer/=x;
 	this._denomer/=x;
     }
+    public int compareTo(Rational num){
+	int x=this._numer*num._denomer;
+	int y=this._denomer*num._numer;
+	return (x>y)? 1:(x<y)?-1:0;
+    }
 
     public static void main(String[] args){
+	Rational num1=new Rational(2,3);
 	Rational numy=new Rational(4,6);
 	Rational num2=new Rational(2,2);
 	System.out.println(numy);
@@ -77,7 +83,11 @@ public class Rational{
 	System.out.println(numy.gcd());
 	numy.reduce();
 	System.out.println(numy);
-	
+	System.out.println(gcd(4,2));
+	numy.divide(num2);
+	System.out.println(numy.compareTo(num2));
+	System.out.println(numy.compareTo(num1));
+
 
     }
 
