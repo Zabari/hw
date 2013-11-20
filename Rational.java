@@ -2,7 +2,7 @@
 // pd 9
 // HW27
 // 2013-11-18
-public class Rational{
+public class Rational implements Comparable {
    public int _numer;
    public int _denomer;
 
@@ -60,10 +60,14 @@ public class Rational{
 	this._numer/=x;
 	this._denomer/=x;
     }
-    public int compareTo(Rational num){
+    public int compareTo(Object o){
+	Rational num=(Rational) o;
 	int x=this._numer*num._denomer;
 	int y=this._denomer*num._numer;
 	return (x>y)? 1:(x<y)?-1:0;
+    }
+    public boolean equals(Rational num){
+	return this.compareTo(num)==0;
     }
 
     public static void main(String[] args){
@@ -87,6 +91,7 @@ public class Rational{
 	numy.divide(num2);
 	System.out.println(numy.compareTo(num2));
 	System.out.println(numy.compareTo(num1));
+	System.out.println(numy.equals(num1));
 
 
     }
